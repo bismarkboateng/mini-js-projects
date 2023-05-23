@@ -52,8 +52,16 @@ const cardArray = [
 
 const grid = document.getElementById("grid")
 // looping through the cardArray and creating an element
-cardArray.forEach((item, i) => {
-    cardImage = document.createElement("img")
-    cardImage.setAttribute("src", item.icon)
-    console.log(cardImage);
-});
+
+
+const createBoard = () => {
+    cardArray.forEach((item, i) => {
+        cardImage = document.createElement("img")
+        cardImage.setAttribute("src", "images/blank.png")
+        cardImage.setAttribute("data-id", i)
+        cardImage.addEventListener("click", flipCard);
+        grid.appendChild(cardImage)
+    });
+}
+
+createBoard();
