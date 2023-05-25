@@ -49,20 +49,6 @@ const cardArray = [
     }
 ]
 
-
-// first create a function to append all the images in the array 
-// under the dom node #grid
-// add click even listeners to each of the images 
-
-// on the call to the event listener, create an array to store the clicked images
-// get their ids, and flip the images by resetting their src attributes 
-// to the required images using array indexing
-
-
-// for checking a match, we need to look for both ids and see if they are equal
-// if so, we alert the use for a win, we reset the attributes to blank images and remove the event listeners
-
-
 // selecting dom elements
 const gridDisplay = document.getElementById("grid")
 const cardChosen = []
@@ -79,6 +65,24 @@ const Board = () => {
     });
 }
 
+const checkMatch = () => {
+    const Images = document.querySelectorAll("img")
+
+    if (cardChosen[0] == cardChosen[1]){
+        alert("You win")
+
+        cardArray[cardChosen[0]].icon.setAttribute("src", "images/white.png")
+        cardArray[cardChosen[1]].icon.setAttribute("src", "images/white.png")
+
+        // removing event listeners
+        cardArray[cardChosen[0]].icon.removeEventListener("click", flipCard)
+        cardArray[cardChosen[1]].icon.removeEventListener("click", flipCard)
+
+    } else {
+        alert("You lose")
+    }
+}
+
 
 const flipCard = () => {
     const cardChosenId = this.getAttribute("data-id")
@@ -86,10 +90,7 @@ const flipCard = () => {
     this.setAttribute("src", cardArray[cardChosenId].icon) // fliping the image
 
     if (cardChosen.length == 2){
-        if (cardChosen[0] === cardChosen[1]) {
-            alert("You win")
-            this.setAttribute("src", "images/white.png") // resetting the image to white
-        }
+        setTimeout(checkMatch, 500)
     }
 }
 
