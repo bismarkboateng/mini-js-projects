@@ -3,7 +3,12 @@ const grid = document.querySelector(".grid")
 const blockWidth = 100
 const blockHeight = 30
 const userStart = [230, 10]
+const boardWidth = 600
+const ballStart = [260, 30]
+
+let ballPosition = ballStart
 let currentPosition = userStart
+
 
 // class to create a block
 class Block {
@@ -53,7 +58,44 @@ user.classList.add("user")
 drawUser()
 grid.appendChild(user)
 
+
+// to paint the user block on screen
 function drawUser() {
     user.style.left = currentPosition[0] + "px"
     user.style.bottom = currentPosition[1] + "px"    
 }
+
+// create a ball element to play 
+const ball = document.createElement("div")
+ball.classList.add("ball")
+drawBall()
+grid.appendChild(ball)
+
+
+// to paint the ball to the screen
+function drawBall() {
+    ball.style.left = ballPosition[0] + "px"
+    ball.style.bottom = ballPosition[1] + "px"
+}
+
+
+// function called to move the user
+function moveUser(e) {
+    switch(e.key) {
+        case "ArrowLeft":
+            if (currentPosition[0] > 0) {
+                currentPosition[0] -= 10
+                drawUser()
+            }
+            break;
+        case "ArrowRight":
+            if (currentPosition[0] < boardWidth - blockWidth) {
+                currentPosition[0] += 10
+                drawUser()
+            }
+            break;
+    }
+}
+
+// adding event listener to move the user
+document.addEventListener("keydown", moveUser)

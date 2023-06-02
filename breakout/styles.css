@@ -13,6 +13,7 @@
     background-color: blue;
     left: 50px;
     bottom: 50px;
+    margin-left: 10px;
 }
 
 .user {
@@ -20,4 +21,12 @@
     width: 100px;
     height: 20px;
     background-color: gray;
+}
+
+.ball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: red;
 }
