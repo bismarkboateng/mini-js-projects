@@ -2,6 +2,8 @@ const grid = document.querySelector(".grid")
 
 const blockWidth = 100
 const blockHeight = 30
+const userStart = [230, 10]
+let currentPosition = userStart
 
 // class to create a block
 class Block {
@@ -13,14 +15,27 @@ class Block {
     }
 }
 
-
 const blocks = [
-    new Block(130, 130)
+    new Block(10, 270),
+    new Block(120, 270),
+    new Block(230, 270),
+    new Block(340, 270),
+    new Block(450, 270),
+
+    new Block(10, 240),
+    new Block(120, 240),
+    new Block(230, 240),
+    new Block(340, 240),
+    new Block(450, 240),
+
+    new Block(10, 210),
+    new Block(120, 210),
+    new Block(230, 210),
+    new Block(340, 210),
+    new Block(450, 210)
 ]
 
-
 const addBlocks = () => {
-
     for (let i=0; i<blocks.length; i++) {
         const block = document.createElement("div")
         block.classList.add("block")
@@ -31,3 +46,14 @@ const addBlocks = () => {
 }
 
 addBlocks()
+
+const user = document.createElement("div")
+user.classList.add("user")
+// this sets the initial position of the current user
+drawUser()
+grid.appendChild(user)
+
+function drawUser() {
+    user.style.left = currentPosition[0] + "px"
+    user.style.bottom = currentPosition[1] + "px"    
+}
