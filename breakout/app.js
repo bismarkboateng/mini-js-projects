@@ -9,7 +9,9 @@ const ballStart = [260, 30]
 let ballPosition = ballStart
 let currentPosition = userStart
 let timerId
-
+let xDirection = 2
+let yDirection = 2
+let ballDiameter = 30
 
 // class to create a block
 class Block {
@@ -96,19 +98,46 @@ function moveUser(event) {
             }
             break;
     }
-}
+}checkForCollision()
 
 
 
 moveBall()
 
 function moveBall() {
-    ballPosition[0] += 2
-    ballPosition[1] += 2
+    ballPosition[0] += xDirection
+    ballPosition[1] += yDirection
     drawBall()
+    checkForCollision()
 }
 
 timerId = setInterval(moveBall, 20)
 
 // adding event listener to move the user
 document.addEventListener("keydown", moveUser)
+
+function checkForCollision() {
+    if (ballPosition[0] >= (boardWidth - ballDiameter)) {
+        changeDirection()
+    }
+}
+
+
+function changeDirection() {
+    if (xDirection === 2 && yDirection === 2) {
+        yDirection = -2
+        return
+    }
+    if (xDirection === 2 && yDirection === -2) {
+        xDirection = -2
+        return
+    }
+    if (xDirection === -2 && yDirection === -2) {
+        yDirection = 2
+        return 
+    }
+    if (xDirection === -2 && yDirection === 2) {
+        xDirection = 2
+        return
+    }
+}
