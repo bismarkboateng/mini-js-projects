@@ -8,6 +8,7 @@ const ballStart = [260, 30]
 
 let ballPosition = ballStart
 let currentPosition = userStart
+let timerId
 
 
 // class to create a block
@@ -80,8 +81,8 @@ function drawBall() {
 
 
 // function called to move the user
-function moveUser(e) {
-    switch(e.key) {
+function moveUser(event) {
+    switch(event.key) {
         case "ArrowLeft":
             if (currentPosition[0] > 0) {
                 currentPosition[0] -= 10
@@ -96,6 +97,18 @@ function moveUser(e) {
             break;
     }
 }
+
+
+
+moveBall()
+
+function moveBall() {
+    ballPosition[0] += 2
+    ballPosition[1] += 2
+    drawBall()
+}
+
+timerId = setInterval(moveBall, 20)
 
 // adding event listener to move the user
 document.addEventListener("keydown", moveUser)
