@@ -1,15 +1,17 @@
 const grid = document.querySelector(".grid")
+const scoreDisplay = document.querySelector("#score")
 
 const blockWidth = 100
 const blockHeight = 30
 const userStart = [230, 10]
 const boardWidth = 600
+const boardHeight = 300
 const ballStart = [260, 30]
 
 let ballPosition = ballStart
 let currentPosition = userStart
 let timerId
-let xDirection = 2
+let xDirection = -2
 let yDirection = 2
 let ballDiameter = 30
 
@@ -117,8 +119,33 @@ timerId = setInterval(moveBall, 20)
 document.addEventListener("keydown", moveUser)
 
 function checkForCollision() {
-    if (ballPosition[0] >= (boardWidth - ballDiameter)) {
+    // check for block collision
+    for (let i=0; i<blocks.length; i++) {
+        if (
+            (ballPosition[0] > blocks[i].bottomLeft[0] && 
+             ballPosition[0] < blocks[i].bottomRight[0]) && 
+            ((ballPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] && 
+             ballPosition[1] < blocks[i].topLeft[1]
+            )
+        ) {
+            const allBlocks = Array.from(document.querySelectorAll(".block"))
+            // console.log(allBlocks)
+
+        }
+    }
+
+
+    if (ballPosition[0] >= (boardWidth - ballDiameter) ||
+        ballPosition[1] >= (boardHeight - ballDiameter)
+    
+    ) {
         changeDirection()
+    }
+
+    if (ballPosition[1] <= 0) {
+        clearInterval(timerId)
+        scoreDisplay.textContent = "You lose"
+        document.removeEventListener("keydown", moveUser)
     }
 }
 
