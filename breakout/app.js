@@ -13,7 +13,8 @@ let currentPosition = userStart
 let timerId
 let xDirection = -2
 let yDirection = 2
-let ballDiameter = 30
+let ballDiameter = 20
+let score = 0
 
 // class to create a block
 class Block {
@@ -129,18 +130,36 @@ function checkForCollision() {
             )
         ) {
             const allBlocks = Array.from(document.querySelectorAll(".block"))
-            // console.log(allBlocks)
+            allBlocks[i].classList.remove("block")
+            blocks.splice(i, 1)
+            changeDirection()
+            score++
+            scoreDisplay.textContent = score
 
+            // check for win
+            if (blocks.length === 0) {
+                scoreDisplay.textContent = "You Win"
+                clearInterval(timerId)
+                document.removeEventListener("keydown", moveUser)
+            }
         }
     }
 
 
     if (ballPosition[0] >= (boardWidth - ballDiameter) ||
         ballPosition[1] >= (boardHeight - ballDiameter)
-    
     ) {
         changeDirection()
     }
+
+    // check for user collisions
+    if ((ballPosition[0] > currentPosition[0] && 
+        ballPosition[0] < currentPosition[0] +  blockWidth) && 
+        (ballPosition[1] > currentPosition[1] && ballPosition[1] < currentPosition[1] + blockHeight)
+       ) {
+         changeDirection()
+       }
+       
 
     if (ballPosition[1] <= 0) {
         clearInterval(timerId)
