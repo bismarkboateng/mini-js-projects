@@ -1,4 +1,4 @@
-# JavaScript Meme Generator
+# JavaScript Quote Generator
 <br />
 <img src="quote-gen.png" alt="quote generator">
 <br />
@@ -16,5 +16,5 @@ Start by cloning the repo with the command below <br />
 ```
 git clone https://github.com/bismarkboateng/mini-js-projects.git 
 cd quote-generator
-```
+```<br>
 you can then use a live server or copy the link into your browser to test it out
