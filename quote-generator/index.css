@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    background-image: url("/images/library-background.jpg");
+}
+
+.quote-container {
+    width: 30%;
+    margin: auto;
+    margin-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.head {
+    border: 1px solid #fff;
+    background-color: #161616;
+    color: #fff;
+    padding: 5px 5px;
+    width: 44%;
+    border-radius: 5px;
+}
+
+.quote-content {
+    background-color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.add-quote {
+    background-color: rgb(43, 43, 240);
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
