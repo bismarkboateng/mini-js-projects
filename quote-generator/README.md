@@ -12,7 +12,7 @@ How to use the query Selector to select dom nodes and
 adding event listeners to them
 <br />
 <h4>Installation</h4>
-Start by cloning the repo with the command below
+Start by cloning the repo with the command below <br />
 ```
 git clone https://github.com/bismarkboateng/mini-js-projects.git 
 cd quote-generator
